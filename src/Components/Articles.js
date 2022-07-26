@@ -17,6 +17,7 @@ const Articles = ({homeArticles}) => {
         key={article.uri}
         title= {article.title}
         photo={photoURL()}
+        abstract={article.abstract}
         // photoCaption={article.multimedia[0].caption}
       />
     )

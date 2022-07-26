@@ -1,12 +1,15 @@
 import { NavLink} from 'react-router-dom';
 import '../styles/Article.css'
 
-const Article = ({title, photo, photoCaption, id}) => {
+const Article = ({title, photo, photoCaption, id, abstract}) => {
   return (
     <NavLink to={`/${id}`}>
     <div className='article'>
         <img className='article-photo' id={id} src={photo}/>
-        <h1>{title}</h1>
+        <div className='article-text-container'>
+          <h1 className='article-title'>{title}</h1>
+          <p className='article-abstract'>{abstract}</p>
+        </div>
     </div>
     </NavLink>
   )
