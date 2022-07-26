@@ -1,0 +1,17 @@
+.articles-container {
+  /* border: 3px solid red; */
+  display: flex;
+
+  flex-direction: column;
+  height: 90%;
+  width: 100%;
+}
+
+a {
+  display: flex;
+  justify-content: center;
+  height: 50%;
+  width: 100%;
+  margin-bottom: 5%;
+  text-decoration: none;
+}
