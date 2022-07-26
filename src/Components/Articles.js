@@ -1,9 +1,9 @@
 import Article from './Article'
 import '../styles/Articles.css'
-import stockImage from '../styles/stockImage.jpeg'
+// import stockImage from '../styles/stockImage.jpeg'
 
-const Articles = ({homeArticles}) => {
-  const articleCards = homeArticles.map(article => {
+const Articles = ({currentArticles}) => {
+  const articleCards = currentArticles.results.map((article, index) => {
     const photoURL = () => {
       if (article.multimedia === null) {
         return 'https://depositphotos.com/stock-photos/jubilation.html' 
@@ -13,8 +13,8 @@ const Articles = ({homeArticles}) => {
     }
     return (
       <Article 
-        id={article.uri}
-        key={article.uri}
+        id={index}
+        key={index}
         title= {article.title}
         photo={photoURL()}
         abstract={article.abstract}

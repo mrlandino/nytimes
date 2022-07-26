@@ -7,20 +7,20 @@ import { getHomeArticles } from '../apiCalls.js';
 import ArticleDetails from './ArticleDetails.js';
 
 const App = () => {
-  const [homeArticles, setHomeArticles] = useState([])
+  const [currentArticles, setCurrentArticles] = useState('')
 
   useEffect(() => {
     getHomeArticles()
-    .then(data => setHomeArticles(data.results))
+    .then(data => setCurrentArticles(data))
     .catch(error => console.log(error))
   }, [])
 
   return (
     <div className="App">
-      <Nav/>
+      <Nav />
       <Routes>
-        <Route path='/' element={homeArticles && <Landing homeArticles={homeArticles}/>} />
-        <Route path='/:id' element={<ArticleDetails />} />
+        <Route path='/' element={currentArticles && <Landing currentArticles={currentArticles}/>}/>
+        <Route exact path='article/:id' element={<ArticleDetails />}/>
       </Routes>
     </div>
   );

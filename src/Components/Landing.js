@@ -1,11 +1,11 @@
 import '../styles/Landing.css'
 import Articles from './Articles'
 
-const Landing = ({homeArticles}) => {
+const Landing = ({currentArticles}) => {
   return (
     <div className='landing-page'>
-      <h2>Top Stories</h2>
-      <Articles homeArticles={homeArticles}/>
+      {currentArticles.section === "home" && <h2>Top Stories</h2>}
+      <Articles currentArticles={currentArticles}/>
     </div>
   )
 }
