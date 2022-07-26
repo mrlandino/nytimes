@@ -1,0 +1,14 @@
+.landing-page {
+  /* border: 3px solid green; */
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  width: 100vw;
+  overflow-x: scroll;
+}
+h2 {
+  text-align: center;
+  margin: 5%;
+  /* color: white; */
+  font-size: 4vw;
+}
