@@ -6,7 +6,7 @@ const Articles = ({currentArticles}) => {
   const articleCards = currentArticles.results.map((article, index) => {
     const photoURL = () => {
       if (article.multimedia === null) {
-        return 'https://depositphotos.com/stock-photos/jubilation.html' 
+        return 'https://st.depositphotos.com/2309453/2603/i/600/depositphotos_26039209-stock-photo-excited-businessman-jumps-high-in.jpg' 
       } else {
         return article.multimedia[0].url;
       } 

@@ -1,10 +1,11 @@
 import '../styles/Landing.css'
 import Articles from './Articles'
 
-const Landing = ({currentArticles}) => {
+const Landing = ({currentArticles, sectionTitle}) => {
+
   return (
     <div className='landing-page'>
-      {currentArticles.section === "home" && <h2>Top Stories</h2>}
+      <h2>{sectionTitle.toUpperCase()}</h2>
       <Articles currentArticles={currentArticles}/>
     </div>
   )

@@ -1,7 +1,8 @@
 import '../styles/Nav.css'
 import { useNavigate } from 'react-router-dom';
+import { getHomeArticles } from '../apiCalls.js';
 
-const Nav = () => {
+const Nav = ({setCurrentArticles, setSectionTitle}) => {
   const buttons = [
     'arts', 
     'automobiles', 
@@ -10,9 +11,7 @@ const Nav = () => {
     'fashion', 
     'food', 
     'health', 
-    'home', 
     'insider', 
-    'magazine', 
     'movies', 
     'nyregion', 
     'obituaries', 
@@ -31,21 +30,33 @@ const Nav = () => {
     'world'
   ]
 
+  const navigate = useNavigate();
+
+  const handleButtonClick = (section) => {
+    navigate(`/${section}`, {replace: true})
+    setSectionTitle(section)
+    getHomeArticles(section)
+    .then(data => setCurrentArticles(data))
+    .catch(error => console.log(error))
+  }
+
   const renderButton = () => {
-    const result = buttons.map(buttonSection => <button>{buttonSection}</button>)
+    const result = buttons.map((buttonSection, index) => <button key={index} onClick={() => handleButtonClick(buttonSection)}>{buttonSection}</button>)
     return result;
   }
 
-  const navigate = useNavigate();
   const handleClick = () => {
     navigate('/', {replace: true})
+    getHomeArticles("home")
+    .then(data => setCurrentArticles(data))
+    .catch(error => console.log(error))
+    setSectionTitle("Top Stories")
   }
 
   return (
     <div className='nav-container'>
       <div className='nav'>
         <h1 className='title' type='button' onClick={handleClick}>NY Times</h1>
-        {/* <button className='home-button'>HOME</button> */}
       </div>
       <div className='sections'>
         {renderButton()}
