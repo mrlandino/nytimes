@@ -9,7 +9,7 @@ import ArticleDetails from './ArticleDetails.js';
 const App = () => {
   const [currentArticles, setCurrentArticles] = useState('')
   const [sectionTitle, setSectionTitle] = useState('Top Stories')
-  const [detailsArticle, setDetailsArticle] = useState('')
+  const [detailsArticle, setDetailsArticle] = useState(null)
 
   useEffect(() => {
     getHomeArticles('home')
@@ -19,16 +19,16 @@ const App = () => {
 
   const navigate = useNavigate();
   const navigateHome = () => {
-    navigate(`/home`, {replace: true})
+    navigate(`/`, {replace: true})
   }
 
   return (
     <div className="App">
       <Nav setCurrentArticles={setCurrentArticles} setSectionTitle={setSectionTitle}/>
       <Routes>
-        <Route path='/' element={currentArticles && <Landing currentArticles={currentArticles} sectionTitle={sectionTitle}/>}/>
-        {currentArticles ? <Route exact path='/:section' element={currentArticles && <Landing currentArticles={currentArticles} sectionTitle={sectionTitle}/>}/> : navigateHome()}
-        <Route exact path='article/:id' element={<ArticleDetails />}/>
+        <Route path='/' element={currentArticles && <Landing currentArticles={currentArticles} sectionTitle={sectionTitle} setDetailsArticle={setDetailsArticle}/>}/>
+        {currentArticles ? <Route exact path='/:section' element={currentArticles && <Landing currentArticles={currentArticles} sectionTitle={sectionTitle} setDetailsArticle={setDetailsArticle}/>}/> : navigateHome()}
+        {currentArticles ? <Route exact path='article/:id' element={<ArticleDetails currentArticles={currentArticles} detailsArticle={detailsArticle}/>}/> : navigateHome()}
       </Routes>
     </div>
   );
