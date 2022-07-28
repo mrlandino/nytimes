@@ -2,7 +2,9 @@ import Article from './Article'
 import '../styles/Articles.css'
 // import stockImage from '../styles/stockImage.jpeg'
 
-const Articles = ({currentArticles}) => {
+const Articles = ({currentArticles, setDetailsArticle}) => {
+  
+
   const articleCards = currentArticles.results.map((article, index) => {
     const photoURL = () => {
       if (article.multimedia === null) {
@@ -11,6 +13,7 @@ const Articles = ({currentArticles}) => {
         return article.multimedia[0].url;
       } 
     }
+    
     return (
       <Article 
         id={index}
@@ -18,6 +21,7 @@ const Articles = ({currentArticles}) => {
         title= {article.title}
         photo={photoURL()}
         abstract={article.abstract}
+        setDetailsArticle={setDetailsArticle}
         // photoCaption={article.multimedia[0].caption}
       />
     )
